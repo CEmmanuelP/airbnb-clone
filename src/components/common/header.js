@@ -1,70 +1,42 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { TextMiddle } from "./styled";
 import { Link } from "react-router-dom";
 
-const Header = ({ page }) => {
-    return (
-        <div style={{ display: 'flex', padding: '10px 50px', border: '1px solid gray' }}>
-            <div>
-                <LogoImg src='https://risingcamp.com/assets/image-bro-logo@2x.png' />
-            </div>
-            <div style={{ flexGrow: '1', position: 'relative' }}>
-                <HeaderText>Header Component</HeaderText>
-            </div>
-            <div>
-                {page == 'index' &&
-                    <Link to='/login'>
-                        <Button>로그인</Button>
-                    </Link>
-                }
-
-                {page == 'login' &&
-                    <Link to='/'>
-                        <Button>뒤로가기</Button>
-                    </Link>
-                }
-
-                {page == 'home' &&
-                    <Link to='/'>
-                        <Button>로그아웃</Button>
-                    </Link>
-                }
-            </div>
+const Header = () => {
+  return (
+    <HeaderStyle>
+      <div className="div-header">
+        <div className="div-header-logo">
+          <Link to="/" className="div-header-logo-link"></Link>
         </div>
-    )
-}
+        <div className="div-header-search-input"></div>
+        <div className="div-header-menus"></div>
+      </div>
+    </HeaderStyle>
+  );
+};
 
+const HeaderStyle = styled.header`
+  border: 1px solid red;
+  height: 5rem;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+  color: #ffffff;
 
-
-const LogoImg = styled.img`
-    width:60px;
-    height: 60px;
+  .div-header {
+      border: 1px solid blue;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      display: flex;
+      height: 100%;
+      width: 100%
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto
+  }
 `;
 
-const HeaderText = styled(TextMiddle)`
-    font-size:20px;
-    font-weight:600;
-`;
-
-const Button = styled.div`
-    position:relative;
-    top:50%;
-    transform:translate(0,-50%);
-
-    width:100px;
-    padding:10px 0px;
-
-
-    border-radius:6px;
-
-    background-color:rgb(59,105,246);
-
-    font-size:18px;
-    font-weight:600;
-    color:white;
-    text-align:center;
-
-    cursor: pointer;
-`;
-
-export default Header
+export default Header;
