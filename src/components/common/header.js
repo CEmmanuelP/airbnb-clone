@@ -162,6 +162,8 @@ const HeaderStyle = styled.header`
   }
 
   .notification {
+    width: 100%;
+    max-width: 1600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,13 +174,13 @@ const HeaderStyle = styled.header`
   }
 
   .div-header {
-    margin-left: 5rem;
-    margin-right: 5rem;
     display: flex;
     height: 100%;
     width: 100%;
-    height: 5rem;
     max-width: 1600px;
+    margin: 0 auto;
+    height: 5rem;
+
     /* position: relative; */
     justify-content: space-between;
     align-items: center;
