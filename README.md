@@ -9,8 +9,9 @@
 
 - 헤더 퍼블리싱
 - 뼈대 레이아웃 구성
+- footer 퍼블리싱
 
-### 헤더 퍼블리싱
+_헤더 퍼블리싱_
 
 - logo, category, menu, search bar 퍼블리싱
 - scorll시 header-bar 디자인 바뀌는 부분 구현
@@ -18,7 +19,7 @@
 ## TodoList
 
 - [O] header
-- [] footer
+- [O] footer
 - [] main
 - [] house-list
 - [] house-detail
