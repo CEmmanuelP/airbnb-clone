@@ -17,9 +17,9 @@
 
 ## TodoList
 
-[O] header
-[] footer
-[] main
-[] house-list
-[] house-detail
-[] house-reservation
+- [O] header
+- [] footer
+- [] main
+- [] house-list
+- [] house-detail
+- [] house-reservation

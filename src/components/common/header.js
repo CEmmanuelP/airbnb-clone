@@ -147,6 +147,10 @@ const HeaderStyle = styled.header`
         font-weight: 600;
       }
     }
+
+    .div-header-menus {
+      color: var(--gray-color);
+    }
   }
 
   & > div {
