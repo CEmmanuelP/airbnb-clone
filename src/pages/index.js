@@ -64,6 +64,46 @@ const IndexPage = () => {
                 <div className="experience">
                     <div className="experience-wrapper">
                         <h1 className="title">에어비앤비 체험 둘러보기</h1>
+                        <div className="items">
+                            <div className="item1">
+                                <span className="item1-desc">
+                                    여행 중 만나는
+                                    <br /> 이색적인 즐길거리
+                                </span>
+                                <div className="item1-link-div">
+                                    <Link to="#" className="item1-link">
+                                        체험
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="item2">
+                                <span className="item1-desc">
+                                    집에서 만나는
+                                    <br /> 다양한 즐길거리
+                                </span>
+                                <div className="item2-link-div">
+                                    <Link to="3" className="item2-link">
+                                        온라인 체험
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="superhost">
+                    <div className="superhost-wrapper">
+                        <div className="superhost-img-div">
+                            <span>
+                                호스팅에 관해
+                                <br /> 궁금하신 점이 <br />
+                                있나요?
+                            </span>
+                            <div className="superhost-link-div">
+                                <Link to="#" className="superhost-link link">
+                                    슈퍼호스트에게 물어보세요
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Main>
@@ -78,6 +118,15 @@ const Main = styled.main`
     .title {
         font-size: 46px;
         font-weight: 500;
+        padding-bottom: 30px;
+    }
+
+    .link {
+        padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 0.9rem;
+        border-radius: 8px;
     }
 
     .intro-wrapper {
@@ -156,10 +205,88 @@ const Main = styled.main`
         background: #ffffff;
 
         .experience-wrapper {
-            border: 1px solid blue;
             width: 100%;
             max-width: 1600px;
             margin: 0 auto;
+            padding-bottom: 30px;
+
+            .items {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 20px;
+                color: white;
+
+                .item1 {
+                    height: 700px;
+                    padding: 80px;
+                    background-image: url(https://a0.muscache.com/im/pictures/c2adcb16-6c3f-4041-86a1-afa9c303c500.jpg?im_w=720);
+                    background-size: cover;
+                    font-weight: 700;
+                    font-size: 2.8rem;
+                    line-height: 3rem;
+                    border-radius: 16px;
+
+                    .item1-link-div {
+                        .item1-link {
+                            padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+                            background-color: #ffffff;
+                            color: #000000;
+                            font-size: 0.9rem;
+                            border-radius: 8px;
+                        }
+                    }
+                }
+
+                .item2 {
+                    height: 700px;
+                    padding: 80px;
+                    background-image: url(https://a0.muscache.com/im/pictures/c1bdf53f-2a19-4529-aa9b-1b0e6bd8d0ee.jpg?im_w=720);
+                    background-size: cover;
+                    font-weight: 700;
+                    font-size: 2.8rem;
+                    line-height: 3rem;
+                    border-radius: 16px;
+
+                    .item2-link-div {
+                        .item2-link {
+                            padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+                            background-color: #ffffff;
+                            color: #000000;
+                            font-size: 0.9rem;
+                            border-radius: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .superhost {
+        background: #ffffff;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .superhost-wrapper {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+            color: #ffffff;
+
+            .superhost-img-div {
+                height: 700px;
+                padding: 80px;
+                background-image: url(https://a0.muscache.com/im/pictures/0528b0f7-4c0c-47bc-9786-d91454f531ba.jpg?im_w=1200);
+                background-size: cover;
+                font-weight: 900;
+                font-size: 4.8rem;
+                line-height: 5rem;
+                border-radius: 16px;
+
+                .superhost-link-div {
+                    margin-top: 20rem;
+                }
+            }
         }
     }
 `;
