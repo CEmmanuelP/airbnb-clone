@@ -2,3 +2,7 @@
   --primary-color: #ff385c;
   --gray-color: #666666;
 }
+
+html {
+  min-width: fit-content;
+}
