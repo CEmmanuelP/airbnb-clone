@@ -1,8 +1,9 @@
 :root {
-  --primary-color: #ff385c;
-  --gray-color: #666666;
+    --primary-color: #ff385c;
+    --gray-color: #666666;
+    --lightGray-color: #dddddd;
 }
 
 html {
-  min-width: fit-content;
+    min-width: fit-content;
 }
