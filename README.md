@@ -38,6 +38,10 @@ import { ReactComponent as Filter } from "../../assets/ic-houses-filter.svg";
 
 - svg 태그 안에 style속성이 있으면 컴파일 안됨.
 
+## 2022-01-11 진행상황
+
+- UserMenuModal publishing
+
 ## TodoList
 
 - [O] header
