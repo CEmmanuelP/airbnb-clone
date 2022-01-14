@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const MiniCard = () => {
+  const onClick
+
   return (
     <MiniCardStyle>
       <div className="card">
