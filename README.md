@@ -43,6 +43,16 @@ import { ReactComponent as Filter } from "../../assets/ic-houses-filter.svg";
 -   UserMenuModal publishing
 -   _비고: 당직으로 작업을 거의 못함_
 
+## 2022-01-13 진행상황
+
+-   houses page publishing
+-   user menu modal publishing
+
+## 2022-01-12 진행상황
+
+-   UserMenuModal publishing
+-   _비고: 당직으로 작업을 거의 못함_
+
 ## TodoList
 
 -   [O] header
