@@ -1,11 +1,41 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Modal from "./Modal";
 import UserMenu from "./UserMenu";
 
 const UserMenuModal = () => {
+  const [openLoginModal, setOpenLoginModal] = useState(false);
+
+  useEffect(() => {
+    console.log(openLoginModal);
+  }, [openLoginModal]);
+
+  const onClickLogin = (e) => {
+    e.preventDefault();
+    setOpenLoginModal(!openLoginModal);
+  };
+
   return (
-    <UserMenuModalStyle>
-      <UserMenu />
-    </UserMenuModalStyle>
+    <>
+      <UserMenuModalStyle>
+        <Link onClick={onClickLogin}>
+          <UserMenu menu="회원 가입" />
+        </Link>
+        <UserMenu menu="로그인" />
+        <div className="divider"></div>
+        <UserMenu menu="숙소 호스트 되기" />
+        <UserMenu menu="체험 호스팅 하기" />
+        <UserMenu menu="도움말" />
+      </UserMenuModalStyle>
+      {openLoginModal && (
+        <Modal
+          open={openLoginModal}
+          close={setOpenLoginModal(false)}
+          header="Login Modal"
+        />
+      )}
+    </>
   );
 };
 
@@ -21,8 +51,14 @@ const UserMenuModalStyle = styled.div`
   background-color: #ffffff;
   box-shadow: rgb(0 0 0 / 8%) 0 2px 4px;
   border-radius: 16px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  .divider {
+    border-top: 1px solid var(--lightGray-color);
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 `;
 
 export default UserMenuModal;

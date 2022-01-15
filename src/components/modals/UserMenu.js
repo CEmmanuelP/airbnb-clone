@@ -1,20 +1,16 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const UserMenu = () => {
+const UserMenu = ({ menu }) => {
   return (
     <UserMenuStyle>
-      <div>
-        <Link to="#">회원 가입</Link>
-      </div>
+      <div>{menu}</div>
     </UserMenuStyle>
   );
 };
 
 const UserMenuStyle = styled.div`
   display: flex;
-  border: 1px solid aqua;
-  height: 40px;
+  height: 50px;
   padding-left: 12px;
   align-items: center;
   font-size: 14px;
