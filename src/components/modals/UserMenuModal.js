@@ -16,13 +16,20 @@ const UserMenuModal = () => {
     setOpenLoginModal(!openLoginModal);
   };
 
+  const closeLogin = () => {
+    setOpenLoginModal(false);
+  };
+
   return (
     <>
       <UserMenuModalStyle>
         <Link onClick={onClickLogin}>
           <UserMenu menu="회원 가입" />
         </Link>
-        <UserMenu menu="로그인" />
+        <Link onClick={onClickLogin}>
+          <UserMenu menu="로그인" />
+        </Link>
+
         <div className="divider"></div>
         <UserMenu menu="숙소 호스트 되기" />
         <UserMenu menu="체험 호스팅 하기" />
@@ -31,8 +38,8 @@ const UserMenuModal = () => {
       {openLoginModal && (
         <Modal
           open={openLoginModal}
-          close={setOpenLoginModal(false)}
-          header="Login Modal"
+          close={closeLogin}
+          header="로그인 또는 회원가입"
         />
       )}
     </>

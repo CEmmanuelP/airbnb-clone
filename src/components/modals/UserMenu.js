@@ -10,7 +10,7 @@ const UserMenu = ({ menu }) => {
 
 const UserMenuStyle = styled.div`
   display: flex;
-  height: 50px;
+  height: 40px;
   padding-left: 12px;
   align-items: center;
   font-size: 14px;
