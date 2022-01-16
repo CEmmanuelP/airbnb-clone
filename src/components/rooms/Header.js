@@ -1,5 +1,6 @@
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faGlobe, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../../assets/ic-logo.svg";
 
@@ -9,7 +10,9 @@ const RoomHeader = () => {
       <div className="header">
         <div className="inner-header">
           <div className="header-logo-wrapper">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </div>
           <div className="header-input-wrapper">
             <input className="header-input" />
@@ -20,7 +23,12 @@ const RoomHeader = () => {
               <div>
                 <FontAwesomeIcon icon={faGlobe} />
               </div>
-              <div>호스트 되기</div>
+              <div className="user">
+                <Link to="#">
+                  <FontAwesomeIcon icon={faBars} className="menu" />
+                  <FontAwesomeIcon icon={faUser} className="userIcon" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -30,14 +38,16 @@ const RoomHeader = () => {
 };
 
 const RoomHeaderStyle = styled.div`
-  margin: 0;
-  padding: 0;
+  border-bottom: 1px solid var(--lightGray-color);
+
   .header {
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
     height: 80px;
     background-color: #ffffff;
+    padding-left: 80px;
+    padding-right: 80px;
 
     .inner-header {
       display: flex;
@@ -64,11 +74,27 @@ const RoomHeaderStyle = styled.div`
       }
       .header-menu-wrapper {
         padding-right: 1.5rem;
+        color: var(--gray-color);
         .header-menu {
           display: flex;
+          align-items: center;
+
           & * {
             padding-left: 0.5rem;
             padding-right: 0.5rem;
+          }
+
+          .user {
+            position: relative;
+            background: rgb(250, 250, 252);
+            border-radius: 99px;
+            padding: 0.8rem 0.3rem 0.8rem 0.3rem;
+            margin-left: 0.5rem;
+            border: 1px solid #dddddd;
+
+            a {
+              color: #444444;
+            }
           }
         }
       }

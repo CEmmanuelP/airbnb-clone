@@ -8,7 +8,10 @@ import { faChevronDown, faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import validator from "validator";
 import styled from "styled-components";
+import axios from "axios";
+import { ReactComponent as Error } from "../../assets/ic-error.svg";
 import "./modal.css";
 
 const Modal = (props) => {
@@ -16,6 +19,9 @@ const Modal = (props) => {
   const { open, close, header } = props;
 
   const [loginType, setLoginType] = useState("phoneNumber");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [emailAuth, setEmailAuth] = useState("");
 
   // modal 뒷배경 스크롤 방지
   useEffect(() => {
@@ -36,6 +42,35 @@ const Modal = (props) => {
     console.log(loginType);
   }, [loginType]);
 
+  const validateEmail = (e) => {
+    let email = e.target.value;
+
+    console.log(validator.isEmail(email));
+    if (validator.isEmail(email)) {
+      setEmailError("");
+    } else {
+      setEmailError("not email!");
+    }
+  };
+
+  const emailSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(email);
+
+      const url = `https://www.starmooncloudk.com/users/mail?userMail=${email}`;
+
+      const res = await axios({
+        method: "GET",
+        url,
+      });
+
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <LoginModalStyle className={open ? "openModal modal" : "modal"}>
@@ -48,103 +83,144 @@ const Modal = (props) => {
             </button>
             {header}
           </header>
-          <main className="main">
-            <h1 className="title">에어비앤비에 오신 것을 환영합니다.</h1>
-            <div className="content">
-              {loginType === "phoneNumber" ? (
-                <form action="#" className="number-form">
-                  <div className="region">
-                    <input className="input-region" placeholder="hi" />
-                    <FontAwesomeIcon
-                      icon={faChevronDown}
-                      className="ic-region"
-                    />
+          {emailAuth === "1000" ? (
+            <>
+              <main className="main">
+                <div className="content">
+                  <div className="fullName">
+                    <div className="lastName">
+                      <input />
+                    </div>
+                    <div className="firstName">
+                      <input />
+                    </div>
+                    <div className="join-info">
+                      정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.
+                    </div>
                   </div>
-                  <input className="phone" placeholder="전화번호"></input>
-                  <div className="info">
-                    전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지
-                    요금 및 데이터 요금이 부과됩니다.{" "}
-                    <span>
-                      <Link to="#">개인정보 처리방침</Link>
-                    </span>
-                  </div>
-                  <button type="submit" className="continue">
-                    계속
-                  </button>
-                </form>
-              ) : (
-                <form action="#" className="email-form">
-                  <div className="email">
-                    <input className="input-email" placeholder="이메일" />
-                  </div>
-                  <button type="submit" className="continue">
-                    계속
-                  </button>
-                </form>
-              )}
-              <div className="divider">
-                <span>또는</span>
-              </div>
-              <div className="btn-login div-facebook">
-                <button className="facebook">
-                  <FontAwesomeIcon
-                    icon={faFacebook}
-                    className="ic ic-facebook"
-                  />
-                  <span>페이스북으로 로그인하기</span>
-                </button>
-              </div>
-              <div className="btn-login div-google">
-                <button className="google">
-                  <FontAwesomeIcon icon={faGoogle} className="ic ic-google" />
-                  <span>구글로 로그인하기</span>
-                </button>
-              </div>
-              <div className="btn-login div-apple">
-                <button className="apple">
-                  <FontAwesomeIcon icon={faApple} className="ic ic-apple" />
-                  <span>Apple 계정으로 로그인하기</span>
-                </button>
-              </div>
-              {loginType === "phoneNumber" ? (
-                <div className="btn-login div-email">
-                  <button
-                    className="email"
-                    onClick={() => {
-                      setLoginType("email");
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="ic ic-email"
-                    />
-                    <span>이메일로 로그인하기</span>
-                  </button>
                 </div>
-              ) : (
-                <div className="btn-login div-phone">
-                  <button
-                    className="phone"
-                    onClick={() => {
-                      setLoginType("phoneNumber");
-                    }}
-                  >
-                    <FontAwesomeIcon
-                      icon={faMobileAlt}
-                      className="ic ic-phone"
-                    />
-                    <span>휴대전화로 로그인하기</span>
-                  </button>
+              </main>
+            </>
+          ) : (
+            <>
+              <main className="main">
+                <h1 className="title">에어비앤비에 오신 것을 환영합니다.</h1>
+                <div className="content">
+                  {loginType === "phoneNumber" ? (
+                    <form action="#" className="number-form">
+                      <div className="region">
+                        <input className="input-region" placeholder="hi" />
+                        <FontAwesomeIcon
+                          icon={faChevronDown}
+                          className="ic-region"
+                        />
+                      </div>
+                      <input className="phone" placeholder="전화번호"></input>
+                      <div className="info">
+                        전화나 문자로 전화번호를 확인하겠습니다. 일반 문자
+                        메시지 요금 및 데이터 요금이 부과됩니다.{" "}
+                        <span>
+                          <Link to="#">개인정보 처리방침</Link>
+                        </span>
+                      </div>
+                      <button type="submit" className="continue">
+                        계속
+                      </button>
+                    </form>
+                  ) : (
+                    <form
+                      onSubmit={(e) => {
+                        emailSubmit(e);
+                      }}
+                      className="email-form"
+                    >
+                      <div className="email">
+                        <input
+                          className="input-email"
+                          placeholder="이메일"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            validateEmail(e);
+                          }}
+                        />
+                      </div>
+                      <div className="error">
+                        {emailError ? (
+                          <>
+                            <Error />
+                            <span className="error-detail">{emailError}</span>
+                          </>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <button type="submit" className="continue">
+                        계속
+                      </button>
+                    </form>
+                  )}
+                  <div className="divider">
+                    <span>또는</span>
+                  </div>
+                  <div className="btn-login div-facebook">
+                    <button className="facebook">
+                      <FontAwesomeIcon
+                        icon={faFacebook}
+                        className="ic ic-facebook"
+                      />
+                      <span>페이스북으로 로그인하기</span>
+                    </button>
+                  </div>
+                  <div className="btn-login div-google">
+                    <button className="google">
+                      <FontAwesomeIcon
+                        icon={faGoogle}
+                        className="ic ic-google"
+                      />
+                      <span>구글로 로그인하기</span>
+                    </button>
+                  </div>
+                  <div className="btn-login div-apple">
+                    <button className="apple">
+                      <FontAwesomeIcon icon={faApple} className="ic ic-apple" />
+                      <span>Apple 계정으로 로그인하기</span>
+                    </button>
+                  </div>
+                  {loginType === "phoneNumber" ? (
+                    <div className="btn-login div-email">
+                      <button
+                        className="email"
+                        onClick={() => {
+                          setLoginType("email");
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={faEnvelope}
+                          className="ic ic-email"
+                        />
+                        <span>이메일로 로그인하기</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="btn-login div-phone">
+                      <button
+                        className="phone"
+                        onClick={() => {
+                          setLoginType("phoneNumber");
+                        }}
+                      >
+                        <FontAwesomeIcon
+                          icon={faMobileAlt}
+                          className="ic ic-phone"
+                        />
+                        <span>휴대전화로 로그인하기</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </main>
-          {/* <footer>
-            <button className="close" onClick={close}>
-              {" "}
-              close{" "}
-            </button>
-          </footer> */}
+              </main>
+            </>
+          )}
         </section>
       ) : null}
     </LoginModalStyle>
@@ -244,6 +320,18 @@ const LoginModalStyle = styled.div`
                 border-radius: 8px;
                 margin-top: 1rem;
                 margin-bottom: 2rem;
+            }
+
+            .email-form {
+                .error {
+                    margin-top: 10px;
+                    display: flex;
+                    color: red;
+
+                    .error-detail {
+                        margin-left: 5px;
+                    }
+                }
             }
         }
 

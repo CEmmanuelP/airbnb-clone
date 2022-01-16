@@ -59,6 +59,11 @@ import { ReactComponent as Filter } from "../../assets/ic-houses-filter.svg";
 
 ## 2022-01-16 진행상황
 
+- house-detail page publishing
+- use library `validator` : for validate email
+
+**a href 새 탭에 띄우고 reset.css가 동작하지 않음**
+
 ## TodoList
 
 - [O] header
