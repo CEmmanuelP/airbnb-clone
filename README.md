@@ -64,6 +64,6 @@ import { ReactComponent as Filter } from "../../assets/ic-houses-filter.svg";
 - [O] header
 - [O] footer
 - [O] main
-- [] house-list
+- [O] house-list
 - [] house-detail
 - [] house-reservation

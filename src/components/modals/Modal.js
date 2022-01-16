@@ -4,9 +4,9 @@ import {
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./modal.css";
@@ -14,6 +14,8 @@ import "./modal.css";
 const Modal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
+
+  const [loginType, setLoginType] = useState("phoneNumber");
 
   // modal 뒷배경 스크롤 방지
   useEffect(() => {
@@ -30,6 +32,10 @@ const Modal = (props) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(loginType);
+  }, [loginType]);
+
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <LoginModalStyle className={open ? "openModal modal" : "modal"}>
@@ -45,23 +51,37 @@ const Modal = (props) => {
           <main className="main">
             <h1 className="title">에어비앤비에 오신 것을 환영합니다.</h1>
             <div className="content">
-              <form action="#" className="number-form">
-                <div className="region">
-                  <input className="input-region" placeholder="hi" />
-                  <FontAwesomeIcon icon={faChevronDown} className="ic-region" />
-                </div>
-                <input className="phone" placeholder="전화번호"></input>
-                <div className="info">
-                  전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지 요금
-                  및 데이터 요금이 부과됩니다.{" "}
-                  <span>
-                    <Link to="#">개인정보 처리방침</Link>
-                  </span>
-                </div>
-                <button type="submit" className="continue">
-                  계속
-                </button>
-              </form>
+              {loginType === "phoneNumber" ? (
+                <form action="#" className="number-form">
+                  <div className="region">
+                    <input className="input-region" placeholder="hi" />
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
+                      className="ic-region"
+                    />
+                  </div>
+                  <input className="phone" placeholder="전화번호"></input>
+                  <div className="info">
+                    전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지
+                    요금 및 데이터 요금이 부과됩니다.{" "}
+                    <span>
+                      <Link to="#">개인정보 처리방침</Link>
+                    </span>
+                  </div>
+                  <button type="submit" className="continue">
+                    계속
+                  </button>
+                </form>
+              ) : (
+                <form action="#" className="email-form">
+                  <div className="email">
+                    <input className="input-email" placeholder="이메일" />
+                  </div>
+                  <button type="submit" className="continue">
+                    계속
+                  </button>
+                </form>
+              )}
               <div className="divider">
                 <span>또는</span>
               </div>
@@ -86,12 +106,37 @@ const Modal = (props) => {
                   <span>Apple 계정으로 로그인하기</span>
                 </button>
               </div>
-              <div className="btn-login div-email">
-                <button className="email">
-                  <FontAwesomeIcon icon={faEnvelope} className="ic ic-email" />
-                  <span>이메일로 로그인하기</span>
-                </button>
-              </div>
+              {loginType === "phoneNumber" ? (
+                <div className="btn-login div-email">
+                  <button
+                    className="email"
+                    onClick={() => {
+                      setLoginType("email");
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      className="ic ic-email"
+                    />
+                    <span>이메일로 로그인하기</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="btn-login div-phone">
+                  <button
+                    className="phone"
+                    onClick={() => {
+                      setLoginType("phoneNumber");
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faMobileAlt}
+                      className="ic ic-phone"
+                    />
+                    <span>휴대전화로 로그인하기</span>
+                  </button>
+                </div>
+              )}
             </div>
           </main>
           {/* <footer>
@@ -165,6 +210,19 @@ const LoginModalStyle = styled.div`
                 }
             }
 
+            .email {
+                border: 1px solid var(--lightGray-color);
+                border-radius: 8px;
+                height: 2.8rem;
+
+                input {
+                    width: 97.5%;
+                    height: 100%;
+                    border-radius: 8px;
+                    padding-left: 8px;
+                }
+            }
+
             .info {
                 margin-top: 0.6rem;
                 margin-bottom: 0.3rem;
@@ -224,6 +282,14 @@ const LoginModalStyle = styled.div`
             margin-bottom: 1rem;
             height: 3rem;
             position: relative;
+
+            .email {
+                border: 2px solid #aaaaaa;
+            }
+
+            .phone {
+                border: 2px solid #aaaaaa;
+            }
 
             button {
                 width: 100%;

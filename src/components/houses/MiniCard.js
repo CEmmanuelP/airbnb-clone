@@ -9,7 +9,13 @@ const MiniCard = () => {
   return (
     <MiniCardStyle>
       <div className="card">
-        <Link to="#">
+        <Link
+          to="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.open("/rooms/1");
+          }}
+        >
           <div className="card-image">
             <img
               src="https://a0.muscache.com/im/pictures/bc4080e4-e3e9-4846-8865-9c1dd840325f.jpg?im_w=720"
