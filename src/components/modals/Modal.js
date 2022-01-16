@@ -98,6 +98,13 @@ const Modal = (props) => {
                       정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.
                     </div>
                   </div>
+                  <div className="birth">
+                    <div className="birthday">
+                      <input />
+                    </div>
+                    <div className="join-info"></div>
+                  </div>
+                  <div className="email"></div>
                 </div>
               </main>
             </>
