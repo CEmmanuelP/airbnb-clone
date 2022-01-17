@@ -391,6 +391,7 @@ const HousesStyle = styled.div`
     }
     .map {
       flex-grow: 1;
+      z-index: -1;
     }
   }
 `;
