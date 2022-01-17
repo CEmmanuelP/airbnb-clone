@@ -63,6 +63,17 @@ const JoinModalStyle = styled.div`
             form {
                 display: flex;
                 flex-direction: column;
+
+                .fullName {
+                    border: 1px solid aqua;
+                    width: 100%;
+
+                    .lastName {
+                        input {
+                            width: auto;
+                        }
+                    }
+                }
             }
         }
     }
