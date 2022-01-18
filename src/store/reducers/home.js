@@ -1,20 +1,15 @@
 //초기 상태값 설정
-const initialState = {
-
-}
-
+const initialState = {};
 
 //리듀서 설정
 const HomeReducer = (state = initialState, action) => {
-
     switch (action.type) {
         default: {
             return {
-                ...state
-            }
+                ...state,
+            };
         }
     }
+};
 
-}
-
-export default HomeReducer
+export default HomeReducer;
