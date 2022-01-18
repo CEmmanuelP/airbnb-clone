@@ -135,10 +135,16 @@ const JoinModalStyle = styled.div`
       padding: 0;
       width: 99%;
       height: 2rem;
+      border-radius: 8px;
+      border: 1px solid gray;
+      margin-bottom: 10px;
+      padding-left: 10px;
     }
 
     button {
-      height: 2rem;
+      height: 2.5rem;
+      color: #ffffff;
+      border-radius: 8px;
       background-color: var(--primary-color);
     }
 
@@ -152,6 +158,17 @@ const JoinModalStyle = styled.div`
 
           .lastName {
           }
+
+          .join-info {
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+        }
+
+        .agreement {
+          font-size: 13px;
+          color: #666666;
+          margin-bottom: 10px;
         }
       }
     }

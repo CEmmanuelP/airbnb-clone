@@ -4,16 +4,17 @@ import styled from "styled-components";
 import Modal from "./Modal";
 import UserMenu from "./UserMenu";
 
-const UserMenuModal = () => {
+const LoginUserMenuModal = () => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
 
   useEffect(() => {
     console.log(openLoginModal);
   }, [openLoginModal]);
 
-  const onClickLogin = (e) => {
+  const logout = (e) => {
     e.preventDefault();
-    setOpenLoginModal(!openLoginModal);
+    localStorage.removeItem("token");
+    window.location.reload();
   };
 
   const closeLogin = () => {
@@ -23,17 +24,26 @@ const UserMenuModal = () => {
   return (
     <>
       <UserMenuModalStyle>
-        <Link onClick={onClickLogin}>
-          <UserMenu menu="회원 가입" />
-        </Link>
-        <Link onClick={onClickLogin}>
-          <UserMenu menu="로그인" />
-        </Link>
+        <UserMenu menu="메세지" />
+        <UserMenu menu="알림" />
+        <UserMenu menu="여행" />
+        <UserMenu menu="위시리스트" />
 
         <div className="divider"></div>
         <UserMenu menu="숙소 호스트 되기" />
         <UserMenu menu="체험 호스팅 하기" />
+        <UserMenu menu="호스트 추천하기" />
+        <UserMenu menu="계정" />
+        <div className="divider"></div>
         <UserMenu menu="도움말" />
+        <Link
+          to="#"
+          onClick={(e) => {
+            logout(e);
+          }}
+        >
+          <UserMenu menu="로그아웃" />
+        </Link>
       </UserMenuModalStyle>
       {openLoginModal && (
         <Modal
@@ -53,7 +63,6 @@ const UserMenuModalStyle = styled.div`
   left: -160px;
   top: 50px;
   width: 240px;
-  /* height: 200px; */
   color: #000000;
   background-color: #ffffff;
   box-shadow: rgb(0 0 0 / 8%) 0 2px 4px;
@@ -68,4 +77,4 @@ const UserMenuModalStyle = styled.div`
   }
 `;
 
-export default UserMenuModal;
+export default LoginUserMenuModal;
