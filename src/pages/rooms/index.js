@@ -92,7 +92,7 @@ const RoomPage = () => {
               <div>
                 <div>Jina님이 호스팅하는 공동 주택 전체</div>
                 <div style={{ fontSize: "0.8rem" }}>
-                  최대 인원 2명, 침싫 1개, 침대 1개, 욕실 1개
+                  최대 인원 2명, 침실 1개, 침대 1개, 욕실 1개
                 </div>
               </div>
               <div className="host_image">
