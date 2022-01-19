@@ -94,6 +94,7 @@ localStorage.removeItem("item");
 ## 2022-01-19
 
 -   tailwind.css
+-   Apply JIT mode
 
 ## TodoList
 
