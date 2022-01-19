@@ -131,11 +131,11 @@ const Header = () => {
                         <Link to="#" onClick={onClickUserButton}>
                             <FontAwesomeIcon
                                 icon={faBars}
-                                className="menu text-2xl"
+                                className="text-2xl menu"
                             />
                             <FontAwesomeIcon
                                 icon={faUser}
-                                className="userIcon text-2xl"
+                                className="text-2xl userIcon"
                             />
                         </Link>
                         {userMenuModal &&
@@ -180,13 +180,13 @@ const Header = () => {
                         </div>
                     </div>
                     <button
-                        className="border text-white border-black-200 p-3 rounded-full bg-primary-color"
+                        className="p-3 text-white border rounded-full border-black-200 bg-primary"
                         type="submit"
                     >
                         <Search className="" />
                         {/* <FontAwesomeIcon
                             icon={faSearch}
-                            className="text-3xl p-4 bg-primary-color w-1 h-1"
+                            className="w-1 h-1 p-4 text-3xl bg-primary-color"
                         /> */}
                     </button>
                 </form>

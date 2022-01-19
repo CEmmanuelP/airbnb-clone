@@ -105,4 +105,4 @@ localStorage.removeItem("item");
 -   [O] login
 -   [O] Join
 -   [] house-detail
--   [] house-reservation
+-   [] hosting
