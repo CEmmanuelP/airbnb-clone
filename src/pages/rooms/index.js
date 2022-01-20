@@ -61,9 +61,9 @@ const RoomPage = () => {
                     </div>
                 </div>
                 <RoomImageStyle>
-                    <div className="main_image">
+                    <div className="rounded-tl-lg rounded-bl-lg main_image">
                         <img
-                            className="image"
+                            className="rounded-tl-lg rounded-bl-lg image"
                             src="https://a0.muscache.com/im/pictures/miso/Hosting-53117806/original/4adcb939-6a4f-4fd3-8ae6-cb08fac7739e.jpeg?im_w=1200"
                         />
                     </div>
@@ -96,7 +96,9 @@ const RoomPage = () => {
                     <div className="detail">
                         <div className="room_title">
                             <div>
-                                <div>Jina님이 호스팅하는 공동 주택 전체</div>
+                                <div className="text-2xl font-semibold">
+                                    Jina님이 호스팅하는 공동 주택 전체
+                                </div>
                                 <div style={{ fontSize: "0.8rem" }}>
                                     최대 인원 2명, 침실 1개, 침대 1개, 욕실 1개
                                 </div>
@@ -108,7 +110,7 @@ const RoomPage = () => {
                                 />
                             </div>
                         </div>
-                        <div className="room_options">
+                        <div className="mt-2 room_options">
                             <div className="room_option">
                                 <svg
                                     viewBox="0 0 32 32"
@@ -601,7 +603,7 @@ const RoomImageStyle = styled.div`
 
     .main_image {
         grid-area: main_image;
-        height: 28rem;
+        height: 23rem;
     }
 
     .first_image {

@@ -21,6 +21,7 @@ const Header = () => {
     const [users, setUsers] = useState(null);
     const [scrolled, setScrolled] = useState(false);
     const [userMenuModal, setUserMenuModal] = useState(false);
+    const token = localStorage.getItem("token");
 
     const loginModal = useSelector((state) => state.HeaderReducer);
 
@@ -45,33 +46,33 @@ const Header = () => {
         console.log(loginModal);
     }, [loginModal]);
 
-    const onClickHosting = (e) => {
-        e.preventDefault();
-        if (!users) {
-            dispatch(openModalAction());
-        } else {
-            console.log(users);
-        }
-    };
+    // const onClickHosting = (e) => {
+    //     e.preventDefault();
+    //     if (!users) {
+    //         dispatch(openModalAction());
+    //     } else {
+    //         console.log(users);
+    //     }
+    // };
 
     const onClickUserButton = (e) => {
         e.preventDefault();
         setUserMenuModal(!userMenuModal);
     };
 
-    // const onClickHosting = () => {
-    //     console.log("onClickHosting");
+    const onClickHosting = (e) => {
+        console.log("onClickHosting");
+        e.preventDefault();
 
-    //     if (users) {
-    //     } else {
-    //         setOpenLoginModal(true);
-    //     }
-    // };
+        if (token) {
+            window.location.href = "http://localhost:3000/hosting";
+        } else {
+            console.log("login please!");
+        }
+    };
 
     const fetchUsers = async () => {
         try {
-            const token = localStorage.getItem("token");
-
             console.log("start fetchUsers");
 
             const response = await axios.get(
@@ -224,7 +225,7 @@ const HeaderStyle = styled.header`
             box-shadow: 0 0 0 2px #dddddd;
             transform: translate(-50%, 0.125rem) scale(0.83);
             width: 300px;
-            height: 38px;
+            height: 50px;
             top: -12px;
 
             .overlay {
@@ -244,7 +245,7 @@ const HeaderStyle = styled.header`
             .scrolled-placeholder {
                 color: var(--gray-color);
                 padding-left: 15px;
-                padding-right: 130px;
+                padding-right: 120px;
                 font-weight: 600;
             }
         }
@@ -423,7 +424,7 @@ const HeaderStyle = styled.header`
                 padding-left: 1rem;
                 padding-right: 1rem;
 
-                &::before {
+                /* &::before {
                     position: absolute;
                     content: "";
                     width: 1rem;
@@ -435,7 +436,7 @@ const HeaderStyle = styled.header`
                     transform: scaleX(0);
                     transform-origin: center center;
                     transition: transform 0.2s ease 0s;
-                }
+                } */
 
                 &.active::before {
                     transform: scaleX(1);

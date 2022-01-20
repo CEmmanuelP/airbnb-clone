@@ -12,8 +12,12 @@ import Card from "../../components/houses/Card";
 import { ReactComponent as Filter } from "../../assets/ic-houses-filter.svg";
 import MiniCard from "../../components/houses/MiniCard";
 import Map from "../../components/houses/Map";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const HousesPage = () => {
+    const token = localStorage.getItem("token");
+    const [houseList, setHouseList] = useState();
     const filterList = [
         "무선 인터넷",
         "주방",
@@ -28,6 +32,30 @@ const HousesPage = () => {
         "헬스장",
         "아침식사",
     ];
+
+    const fetchHouseList = async () => {
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_BACK_URL}/home`,
+                {
+                    headers: {
+                        "X-ACCESS-TOKEN": `${token}`,
+                    },
+                }
+            );
+
+            console.log(response.data);
+            if (response.data.code === 1000) {
+                setHouseList(response.data.result);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchHouseList();
+    }, []);
 
     return (
         <>
