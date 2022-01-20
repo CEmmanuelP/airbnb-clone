@@ -307,7 +307,7 @@ const HousesStyle = styled.div`
         display: flex;
         width: 100%;
         .houselist {
-            width: 790px;
+            width: 840px;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
             margin-bottom: 40px;
