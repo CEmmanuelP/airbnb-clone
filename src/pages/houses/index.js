@@ -15,6 +15,10 @@ import MiniCard from "../../components/houses/MiniCard";
 import { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import "react-calendar/dist/Calendar.css";
+import MarkerLabel from "../../components/houses/MarkerLabel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const houses = [
   {
@@ -40,6 +44,26 @@ const houses = [
   {
     postIdx: 2,
     hostName:
+      "#1 동대구역, 신세계백화점 CharmingHouse 또오고싶은 깔끔하고 예쁜 숙소",
+    hostCost: "47,000",
+    latitude: 35.87179,
+    longitude: 128.62935,
+    roomImages: [
+      "https://a0.muscache.com/im/pictures/6a43caa6-0719-4f8f-95ad-7fc98cb4c9e0.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/227158d9-f3cf-4e4a-b67f-53b75d2d3223.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/ae16cde4-b6df-4a89-82e9-73a963de6030.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/0b127f0a-c2d8-4168-8881-59be1d98dbce.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/07f8de5a-1157-4607-8f3c-ae250ce311cb.jpg?im_w=720",
+    ],
+    profileImage:
+      "https://a0.muscache.com/im/pictures/user/4e86349c-a6c5-4263-b0d4-efb1a96759a2.jpg?im_w=240",
+    rating: 4.73,
+    reviewNumber: 121,
+    address: "Sincheon 4(sa)-dong, Dong-gu, 대구, 한국",
+  },
+  {
+    postIdx: 3,
+    hostName:
       "[시네마 하우스] 수성못 인근 영화와 게임을 안전하고 편안하게 즐길 수 있는 집 #3-3",
     hostCost: "45,000",
     latitude: 35.82531802651628,
@@ -57,10 +81,36 @@ const houses = [
     reviewNumber: 35,
     address: "Dusan-dong, Suseong-gu, 대구, 한국",
   },
+  {
+    postIdx: 4,
+    hostName: "(반월당.동성로1분,넷플) 복층 민's 하우스1♥장기숙박 특별가♥",
+    hostCost: "53,333",
+    latitude: 35.85964,
+    longitude: 128.62682,
+    roomImages: [
+      "https://a0.muscache.com/im/pictures/02d3688a-2aff-4696-96cc-e98c566da70d.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/0178e0d8-5d4f-4899-9db8-55d75ac0dc7b.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/82b098ec-a73d-44d8-8732-eacf26214430.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/bc8b9042-1286-47f8-9aa4-c50da8983732.jpg?im_w=720",
+      "https://a0.muscache.com/im/pictures/6071d41b-fea2-46bf-95bc-5af10bc4e5ce.jpg?im_w=720",
+    ],
+    profileImage:
+      "https://a0.muscache.com/im/pictures/user/88e44068-cbb7-45d2-a13b-990f4e69cce3.jpg?im_w=240",
+    rating: 4.88,
+    reviewNumber: 25,
+    address: "Namsan-dong, Jung-gu, 대구, 한국",
+  },
 ];
 
 const HousesPage = () => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
   const [houseList, setHouseList] = useState();
   const filterList = [
     "무선 인터넷",
@@ -229,11 +279,11 @@ const HousesPage = () => {
                 </div>
               </div>
               <div className="recommend-house">
-                {houseList
-                  ? houseList.map((room) => {
-                      return <MiniCard key={room.postIdx} room={room} />;
-                    })
-                  : ""}
+                <Slider {...settings}>
+                  {houseList?.map((room) => {
+                    return <MiniCard key={room.postIdx} room={room} />;
+                  })}
+                </Slider>
               </div>
               <div className="mt-8 all-house">
                 <Link to="#">
@@ -253,8 +303,21 @@ const HousesPage = () => {
                   lat: 35.86142,
                   lng: 128.63208,
                 }}
-                defaultZoom={11}
-              ></GoogleMapReact>
+                defaultZoom={12}
+              >
+                {houseList?.map((room) => {
+                  const { longitude, latitude, hostCost, id } = room;
+                  return (
+                    <MarkerLabel
+                      key={id}
+                      lat={latitude}
+                      lng={longitude}
+                      price={hostCost}
+                      room={room}
+                    />
+                  );
+                })}
+              </GoogleMapReact>
             </div>
           </div>
         </div>
@@ -387,8 +450,8 @@ const HousesStyle = styled.div`
           display: flex;
           & > div {
             padding: 8px;
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: 16px;
+            padding-right: 16px;
             border-radius: 100%;
             margin-left: 5px;
             margin-right: 5px;
@@ -456,9 +519,9 @@ const HousesStyle = styled.div`
         .recommend-house {
           width: 100%;
           height: 340px;
-          display: grid;
+          /* display: grid;
           grid-template-columns: repeat(3, 1fr);
-          grid-gap: 10px;
+          grid-gap: 10px; */
         }
         .all-house {
           padding-top: 10px;

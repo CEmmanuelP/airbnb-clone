@@ -20,6 +20,15 @@ import { ReactComponent as HairDryer } from "../../assets/ic-hairdryer.svg";
 import { ReactComponent as ChevronLeft } from "../../assets/ic-chevronleft.svg";
 import { ReactComponent as Refrigerator } from "../../assets/ic-refrigerator.svg";
 import { ReactComponent as Keyboard } from "../../assets/ic-keyboard.svg";
+import { ReactComponent as CheckIn } from "../../assets/ic-checkin.svg";
+import { ReactComponent as Keypad } from "../../assets/ic-keypad.svg";
+import { ReactComponent as NoKid } from "../../assets/ic-nokid.svg";
+import { ReactComponent as NoSmoking } from "../../assets/ic-nosmoking.svg";
+import { ReactComponent as NoPet } from "../../assets/ic-nopet.svg";
+import { ReactComponent as NoParty } from "../../assets/ic-noparty.svg";
+import { ReactComponent as CarbonAlarm } from "../../assets/ic-carbonalarm.svg";
+import { ReactComponent as FireAlarm } from "../../assets/ic-firealarm.svg";
+import { ReactComponent as AuthComplete } from "../../assets/ic-authcomplete.svg";
 import Calendar from "react-calendar";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -327,7 +336,7 @@ const RoomPage = () => {
             </div>
           </div>
           <div className="w-[30%] h-auto relative">
-            <div className="sticky w-full p-4 mt-8 mb-20 text-xl font-medium border border-gray-200 border-solid top-12">
+            <div className="sticky w-full p-4 mt-8 text-xl font-medium border border-gray-200 border-solid rounded-md top-12 elevation-2">
               <div>
                 <span className="text-gray-400 line-through">₩80,257</span>
                 <span className="ml-1">₩{room.hostCost}</span>
@@ -335,13 +344,62 @@ const RoomPage = () => {
               </div>
               <div className="flex items-center my-3 text-sm">
                 <Star className="inline text-primary" />
-                <span>4.81</span>
+                <span>{room.rating}</span>
                 <span className="mx-1"> · </span>
-                <span className="underline">후기 32개</span>
+                <span className="underline">후기 {room.reviewNumber}개</span>
               </div>
-            </div>
-            <div className="sticky w-full h-16 mt-8 border border-solid top-44 border-gray">
-              card2
+              <div>
+                <div className="flex mt-2 text-xs border border-gray-400 border-solid rounded-tl-md rounded-tr-md">
+                  <div className="w-1/2 p-3 border-r border-gray-400 border-solid">
+                    <div>체크인</div>
+                    <div className="font-light text-gray-600">2022. 1. 26.</div>
+                  </div>
+                  <div className="w-1/2 p-3">
+                    <div>체크아웃</div>
+                    <div className="font-light text-gray-600">2022. 1. 28.</div>
+                  </div>
+                </div>
+                <div className="text-xs border-b border-l border-r border-gray-400 border-solid rounded-bl-md rounded-br-md">
+                  <div className="flex justify-between p-3">
+                    <div>
+                      <div>인원</div>
+                      <div className="font-light">게스트 1명</div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button className="w-full px-5 py-3 mt-4 text-sm font-semibold text-white rounded-md bg-primary">
+                    예약하기
+                  </button>
+                </div>
+                <div className="mt-4 text-sm font-normal text-center text-gray-600">
+                  예약 확정 전에는 요금이 청구되지 않습니다.
+                </div>
+              </div>
+              <div className="mt-6 text-base font-light text-gray-600 pay">
+                <div className="flex justify-between mb-3">
+                  <div className="underline">₩{room.hostCost} x 2박</div>
+                  <div>₩112,500</div>
+                </div>
+                <div className="flex justify-between mb-3">
+                  <div className="underline">청소비</div>
+                  <div>₩18,000</div>
+                </div>
+                <div className="flex justify-between mb-3">
+                  <div className="underline">서비스 수수료</div>
+                  <div>₩18,424</div>
+                </div>
+                <div className="flex justify-between mb-3">
+                  <div className="underline">숙박세와 수수료</div>
+                  <div>₩1,842</div>
+                </div>
+              </div>
+              <div className="pt-4 text-base border-t border-gray-200 border-solid total">
+                <div className="flex justify-between">
+                  <div>총 합계</div>
+                  <div>₩150,766</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -454,25 +512,144 @@ const RoomPage = () => {
           </div>
         </div>
         {/* host - 호스트 정보 */}
-        <div className="my-12 w-full max-w-[1080px] m-auto">
-          <div className="w-[85%]">
-            <div className="flex">
+        <div className="my-12 w-full max-w-[1080px] m-auto border-t border-solid border-gray-200 pt-12">
+          <div className="w-[80%]">
+            <div className="flex items-center">
               <div className="rounded-full">
-                <img src="" className="w-12 h-12 mr-4 rounded-full" alt="img" />
+                <img
+                  src="https://a0.muscache.com/im/pictures/user/870a253a-eafb-406e-b482-b883248eadb4.jpg?im_w=240"
+                  className="w-20 h-20 mr-4 rounded-full"
+                  alt="img"
+                />
               </div>
               <div className="mb-4">
-                <div className="font-semibold">호스트: 유정님</div>
-                <div className="text-sm text-gray-400">
-                  안녕하세요. 사람과의 소통과 관계를 중요시하는 대구에 거주하고
-                  있는 호스트입니다. 스처가는 인연일지라도 좋은 기억과 추억을
-                  안겨주고 싶네요^^
+                <div className="text-xl font-semibold">호스트: 유정님</div>
+                <div className="text-gray-400">회원 가입일: 2018년 11월</div>
+              </div>
+            </div>
+            <div className="flex mt-4 text-gray-600">
+              <div className="w-2/3 ">
+                <div className="flex">
+                  <div className="flex items-center mr-4">
+                    <Star className="mr-2 text-primary" />
+                    후기 {room.reviewNumber}개
+                  </div>
+                  <div className="flex items-center mr-4">
+                    <AuthComplete className="mr-2 text-primary" />
+                    본인 인증 완료
+                  </div>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faMedal}
+                      className="mr-2 ic-superhost text-primary"
+                    />
+                    슈퍼호스트
+                  </div>
+                </div>
+                <div className="w-[75%] ">
+                  <div className="mt-4">
+                    안녕하세요. 사람과의 소통과 관계를 중요시하는 대구에
+                    거주하고 있는 호스트입니다. 스처가는 인연일지라도 좋은
+                    기억과 추억을 안겨주고 싶네요^^
+                  </div>
+                  <div className="mt-6">
+                    <div className="font-semibold">숙박 중 게스트와의 교류</div>
+                    <div className="mt-2">
+                      숙소에 머무르시다가 불편한 사항 있으시면 언제나
+                      연락주세요^^
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <div className="font-semibold">
+                      유정님은 슈퍼호스트입니다.
+                    </div>
+                    <div className="mt-2">
+                      슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가
+                      숙소에서 편안히 머무를 수 있도록 최선을 다하는
+                      호스트입니다.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-1/3">
+                <div>응답률: 96%</div>
+                <div className="mt-4">응답 시간: 1시간 이내</div>
+                <div>
+                  <button className="px-5 py-3 mt-6 font-semibold border border-black border-solid rounded-xl">
+                    후기 {room.reviewNumber}개 모두 보기
+                  </button>
                 </div>
               </div>
             </div>
-            <div className="리뷰 내용"></div>
           </div>
         </div>
-        <div className="알아두어야 할 사항"></div>
+        {/* 알아두어야 할 사항 */}
+        <div className="my-12 w-full max-w-[1080px] m-auto border-t border-solid border-gray-200 pt-12">
+          <div className="text-2xl font-medium">알아두어야 할 사항</div>
+          <div className="grid grid-cols-3 gap-3 mt-4">
+            <div>
+              <div className="mb-2 font-semibold">숙소 이용규칙</div>
+              <div>
+                <div className="flex items-center mb-3">
+                  <CheckIn className="mr-3" />
+                  <span>체크인: 오후 4:00 이후</span>
+                </div>
+                <div className="flex items-center mb-3">
+                  <Keypad className="mr-3" />
+                  <span>키패드(으)로 셀프 체크인</span>
+                </div>
+                <div className="flex items-center mb-3">
+                  <NoKid className="mr-3" />
+                  <span>어린이와 유아에게 적합하지 않음</span>
+                </div>
+                <div className="flex items-center mb-3">
+                  <NoSmoking className="mr-3" />
+                  <span>흡연 금지</span>
+                </div>
+                <div className="flex items-center mb-3">
+                  <NoPet className="mr-3" />
+                  <span>반려동물 동반 불가</span>
+                </div>
+                <div className="flex items-center mb-3">
+                  <NoParty className="mr-3" />
+                  <span>파티나 이벤트 금지</span>
+                </div>
+              </div>
+              <div className="mt-4 font-medium">
+                <span className="underline">더 보기</span>
+                <ChevronLeft className="inline ml-1" />
+              </div>
+            </div>
+            <div>
+              <div className="mb-2 font-semibold">건강과 안전</div>
+              <div>
+                <div className="flex items-center mb-3">
+                  <CarbonAlarm className="mr-3" />
+                  <span>일산화탄소 경보기</span>
+                </div>
+                <div className="flex items-center mb-3">
+                  <FireAlarm className="mr-3" />
+                  <span>화재경보기</span>
+                </div>
+              </div>
+              <div className="mt-4 font-medium">
+                <span className="underline">더 보기</span>
+                <ChevronLeft className="inline ml-1" />
+              </div>
+            </div>
+            <div>
+              <div className="mb-2 font-semibold">숙소 이용규칙</div>
+              <div>
+                이 숙박에 대한 취소 세부 내역을 확인하려면 여행 날짜를
+                입력하세요.
+              </div>
+              <div className="mt-4 font-medium">
+                <span className="underline">날짜 추가</span>
+                <ChevronLeft className="inline ml-1" />
+              </div>
+            </div>
+          </div>
+        </div>
         <Footer />
       </RoomPageStyle>
     </>

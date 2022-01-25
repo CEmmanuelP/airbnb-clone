@@ -7,7 +7,7 @@ const MiniCard = ({ room }) => {
   //   const onClick
 
   return (
-    <MiniCardStyle>
+    <MiniCardStyle className="mr-2">
       <div className="card">
         <Link
           to="#"
