@@ -124,7 +124,7 @@ const RoomPage = () => {
                 </div>
                 <div className="flex w-full max-w-[1080px] m-auto  my-12 ">
                     <div className="w-[70%]">
-                        <div className="w-[90%] border-b border-solid border-gray-200">
+                        <div className="w-[90%]">
                             <div className="flex items-center justify-between my-3">
                                 <div>
                                     <div className="text-xl font-medium">
@@ -271,13 +271,9 @@ const RoomPage = () => {
                                 </div>
                             </div>
                             {/* 달력 */}
-                            <div className="달력">
+                            <div className="py-8">
                                 <Calendar />
                             </div>
-                            <div className="후기"></div>
-                            <div className="호스팅 지역"></div>
-                            <div className="호스트"></div>
-                            <div className="알아두어야 할 사항"></div>
                         </div>
                     </div>
                     <div className="w-[30%] h-auto relative">
@@ -304,6 +300,88 @@ const RoomPage = () => {
                         </div>
                     </div>
                 </div>
+                {/* Reviews - 후기 */}
+                <div className="w-full max-w-[1080px] m-auto border-solid border-gray-200 border my-8">
+                    <div className="flex items-center my-4 text-xl font-semibold">
+                        <Star className="text-primary mr-2" />
+                        <span>{room.rating}</span>
+                        <span className="mx-2">·</span>
+                        <span>후기 {room.reviewNumber}개</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex justify-between items-center w-[90%]">
+                            <div>청결도</div>
+                            <div className="w-1/3 flex items-center">
+                                <div className="relative h-[4px] w-full mr-2 bg-gray-200 rounded-sm">
+                                    <span className="absolute top-0 left-0 bottom-0 bg-gray-800 w-full rounded-sm"></span>
+                                </div>
+                                <div className="text-sm font-semibold">5.0</div>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center w-[90%] ">
+                            <div>정확성</div>
+                            <div className="w-1/3 flex items-center">
+                                <div className="relative h-[4px] w-full mr-2 bg-gray-200 rounded-sm">
+                                    <span className="absolute top-0 left-0 bottom-0 bg-gray-800 w-full rounded-sm"></span>
+                                </div>
+                                <div className="text-sm font-semibold">5.0</div>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center w-[90%]">
+                            <div>의사소통</div>
+                            <div className="w-1/3 flex items-center">
+                                <div className="relative h-[4px] w-full mr-2 bg-gray-200 rounded-sm">
+                                    <span className="absolute top-0 left-0 bottom-0 bg-gray-800 w-full rounded-sm"></span>
+                                </div>
+                                <div className="text-sm font-semibold">5.0</div>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center w-[90%]">
+                            <div>위치</div>
+                            <div className="w-1/3 flex items-center">
+                                <div className="relative h-[4px] w-full mr-2 bg-gray-200 rounded-sm">
+                                    <span className="absolute top-0 left-0 bottom-0 bg-gray-800 w-[98%] rounded-sm"></span>
+                                </div>
+                                <div className="text-sm font-semibold">4.9</div>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center w-[90%]">
+                            <div>체크인</div>
+                            <div className="w-1/3 flex items-center">
+                                <div className="relative h-[4px] w-full mr-2 bg-gray-200 rounded-sm">
+                                    <span className="absolute top-0 left-0 bottom-0 bg-gray-800 w-full rounded-sm"></span>
+                                </div>
+                                <div className="text-sm font-semibold">5.0</div>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center w-[90%]">
+                            <div>가격 대비 만족도</div>
+                            <div className="w-1/3 flex items-center">
+                                <div className="relative h-[4px] w-full mr-2 bg-gray-200 rounded-sm">
+                                    <span className="absolute top-0 left-0 bottom-0 bg-gray-800 w-[94%] rounded-sm"></span>
+                                </div>
+                                <div className="text-sm font-semibold">4.7</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                        <div className="">
+                            <div className="프로필">
+                                <div className="이미지">
+                                    <img src="https://a0.muscache.com/im/pictures/user/d3affa48-fa01-4d5c-b761-3690bb784671.jpg?im_w=240" />
+                                </div>
+                                <div className="">
+                                    <div className="">Ilsub</div>
+                                    <div className="">2022년 1월</div>
+                                </div>
+                            </div>
+                            <div className="리뷰 내용"></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="호스팅 지역"></div>
+                <div className="호스트"></div>
+                <div className="알아두어야 할 사항"></div>
                 <Footer />
             </RoomPageStyle>
         </>

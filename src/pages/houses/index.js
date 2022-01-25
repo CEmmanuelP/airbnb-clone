@@ -267,14 +267,19 @@ const HousesPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="map">
-                        <GoogleMapReact
-                            bootstrapURLKeys={{
-                                key: process.env.REACT_APP_MAP_API_KEY,
-                            }}
-                            defaultCenter={{ lat: 33.39572, lng: 126.49461 }}
-                            defaultZoom={11}
-                        ></GoogleMapReact>
+                    <div className="map relative">
+                        <div className="sticky top-[9rem] w-full h-[calc(100vh-9rem)] border-solid border border-gray-400">
+                            <GoogleMapReact
+                                bootstrapURLKeys={{
+                                    key: process.env.REACT_APP_MAP_API_KEY,
+                                }}
+                                defaultCenter={{
+                                    lat: 33.39572,
+                                    lng: 126.49461,
+                                }}
+                                defaultZoom={11}
+                            ></GoogleMapReact>
+                        </div>
                     </div>
                 </div>
                 <Footer />
